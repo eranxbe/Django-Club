@@ -23,19 +23,21 @@ A full stack demo app using django
 ## Getting Started
 
 1. **Installation**: Clone the repository and install dependencies.
-   git clone [(https://github.com/eranxbe/Django-Club)]
-
-   pip install -r requirements.txt
-2. **Database Setup**:  Apply migrations to set up the SQLite3 database.
-   python manage.py makemigrations
    
-   python manage.py migrate
-3. **Run The Server**:
+   `git clone https://github.com/eranxbe/Django-Club.git`
 
-   python manage.py runserver
+   `pip install -r requirements.txt`
+   
+3. **Database Setup**:  Apply migrations to set up the SQLite3 database.
+   `python manage.py makemigrations`
+   
+   `python manage.py migrate`
+4. **Run The Server**:
 
-4. **Access The App**
-   at "127.0.0.1:8000"
+  `python manage.py runserver`
+
+5. **Access The App**
+   [URL](http://127.0.0.1:8000)
    
 
    
