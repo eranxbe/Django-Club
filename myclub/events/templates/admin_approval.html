@@ -1,0 +1,71 @@
+{%extends 'base.html'%}
+{%block content%}
+        <br>
+        <h1 class="display-2">Admin Portal</h1>
+        <div class="card" style="width: 18rem;">
+            <div class="card-header text-bg-danger">
+            Events - Venues - Users Count
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">Events Count: {{event_count}}</li>
+            <li class="list-group-item">Venues Count: {{venue_count}}</li>
+            <li class="list-group-item">Users Count: {{user_count}}</li>
+            </ul>
+        </div>
+        <br>
+        <h2 class="display-4">Event Approval</h2>
+        <form action="" method=POST>
+            {%csrf_token%}
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-danger">
+                        <th scope="column">Event Name</th>
+                        <th scope="column">Approved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for event in event_list%}
+                    <tr>
+                        <td>
+                            <p>{{event}}</p>
+                        </td>
+                        <td>
+                            {%if event.approved%}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" checked="checked" value={{event.id}} name="boxes">
+                            </div>
+                            {%else%}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" checked="" value={{event.id}} name="boxes">
+                            </div>
+                            {%endif%}
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            <button class="btn btn-danger" type="submit">Update Approval</button>
+        </form>
+        <br>
+        <h2 class="display-4">Venues and Events</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-danger">
+                    <th scope="column">Venue</th>
+                    <th scope="column">Event</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for venue in venue_list%}
+                <tr>
+                    <td>
+                        <a href="{%url 'venue_details' venue.id %}">{{venue}}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'venue_event' venue.id %}" class="btn btn-sm btn-danger">List Events</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table> 
+{%endblock content%}

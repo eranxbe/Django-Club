@@ -1,0 +1,38 @@
+
+{%extends 'base.html'%}
+{%block content%}    
+    <h1 class="display-2">Hello {{ name }}! events for {{ month.title }}, {{ year }}</h1>
+    as of {{ time }}
+    <br>
+    <center>
+    {{ cal|safe }}
+    </center>
+    <br>
+    <h2 class="display-2">Events This Month</h2>
+    {%if events%}
+        {%for event in events%}
+            <div class="card">
+                <div class="card-header" style="background-color: #ffb3b3; font-weight: lighter;">
+                    <strong>{{event}} @ {{event.venue}}</strong>
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">{{event.name}}</h5>
+                <p class="card-text">WHAT: {{event.description}}</p>
+                <p class="card-text">WHEN: {{event.event_date}}</p>
+                <p class="card-text">WHERE: {{event.venue}}</p>
+                <p class="card-text">EL CAPITAN: <i>{{event.manager}}</i></p>
+                <p class="card-text">GO TO <a href="{{event.venue.website}}">{{event.venue.website}}</a> FOR MORE DETAILS</p>
+                
+                </div>
+                {% if user == event.manager%}
+                <div class="card-footer text-muted">
+                    <a href="{% url 'update_event' event.id %}" class="btn btn-outline-secondary btn-small">Update</a>
+                    <a href="{% url 'delete_event' event.id %}" class="btn btn-outline-danger btn-small">Delete</a>
+                </div>
+                {%endif%}
+            </div>
+        {%endfor%}
+    {%endif%}
+    <br><br>
+    Copyright (C) {{ current_year }}
+{%endblock content%}
