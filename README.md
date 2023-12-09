@@ -31,6 +31,7 @@ A full stack demo app using django
 3. **Database Setup**:  Apply migrations to set up the SQLite3 database.
    
    `python manage.py makemigrations`
+   
    `python manage.py migrate`
 5. **Run The Server**:
 
@@ -38,7 +39,7 @@ A full stack demo app using django
 
 5. **Access The App**
    
-   using the link[http://127.0.0.1:8000](http://127.0.0.1:8000)
+   using the link `http://127.0.0.1:8000`
    
 
    
