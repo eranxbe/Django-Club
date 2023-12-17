@@ -1,34 +1,7 @@
 {%extends 'base.html'%}
 {%block content%}
         <h1 class="display-2">Venue Details</h1>
-        <div class="card">
-            <div class="card-header" style="background-color: #ffb3b3; font-weight: lighter;">
-                <strong>{{venue.name}}</strong>
-            </div>
-            <div class="card-body">
-            <p class="card-text">{{venue.address}}</p>
-            <p class="card-text">{{venue.zip_code}}</p>
-            <p class="card-text"><a href={{venue.website}}>{{venue.website}}</a></p>
-            <p class="card-text">{{venue.email}}</p>
-            <p class="card-text">Owned by {{owner}}, <a href="">{{owner.email}}</a></p>
-            {%if venue.image%}
-            <img src="{{venue.image.url}}" width=420/>
-            {%else%}
-                No Photo Yet..
-            {%endif%}
-            <br><br>
-            {%if events%}
-                Events in the venue: <br>
-                {%for event in events%}
-                <a href="{%url 'venue_event' venue.id%}">{{event}}</a>
-                <br>
-                {%endfor%}
-            {%else%}
-                No events for this venue
-            {%endif%}
-            </div>
-            
-        </div>
+        {%include 'partials/venue.html' with venue=venue owner=owner events=events%}
         <br>
     <button class="btn btn-secondary" onclick="location.href = '/venues';">Return to Venues List</button>
 {%endblock content%}

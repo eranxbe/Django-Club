@@ -2,24 +2,7 @@
 {% block content %}
     <h1 class="display-2">My Events</h1>
     {%for event in events%}
-    <br/>
-    <div class="card">
-        <div class="card-header" style="background-color: #ffb3b3; font-weight: lighter;">
-            <strong>{{event}} @ {{event.venue}}</strong>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{event.name}}</h5>
-          <p class="card-text">WHAT: {{event.description}}</p>
-          <p class="card-text">WHEN: {{event.event_date}}</p>
-          <p class="card-text">WHERE: {{event.venue}}</p>
-          <p class="card-text">EL CAPITAN: <i>{{event.manager}}</i></p>
-          <p class="card-text">{{event.days_until}} From Today</p>
-          <p class="card-text">GO TO <a href="{{event.venue.website}}">{{event.venue.website}}</a> FOR MORE DETAILS</p>
-          {%if event.approved%}
-              <p class="card-text">APPROVED</p>
-          {%endif%}
-        </div>
-    </div>   
+        {%include 'partials/event.html' with event=event%}
+        <br>
     {%endfor%}
-
 {% endblock content %}

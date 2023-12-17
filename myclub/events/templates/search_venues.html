@@ -4,23 +4,8 @@
         <h1 class="display-2">You searched "{{searched}}"</h1>
         <br>
         {%for venue in venues%}
-            {% comment %} <a href="{% url 'venue_details' venue.id %}">{{venue.name}}</a> {% endcomment %}
-            <div class="card">
-                <div class="card-header" style="background-color: #ffb3b3; font-weight: lighter;">
-                    <strong>{{venue.name}}</strong>
-                </div>
-                <div class="card-body">
-                <p class="card-text">{{venue.address}}</p>
-                <p class="card-text">{{venue.zip_code}}</p>
-                <p class="card-text"><a href={{venue.website}}>{{venue.website}}</a></p>
-                <p class="card-text">{{venue.email}}</p>
-                <p class="card-text">Owned by {{venue.owner}}, <a href="">{{venue.email}}</a></p>
-                </div>
-            </div>
+            <a href="{% url 'venue_details' venue.id %}">{{venue.name}}</a>
             <br>
         {%endfor%}
-
-    {% comment %} {%else%}
-        <h1 class="display-2">You forgot to search for a venue</h1> {% endcomment %}
     {%endif%}
 {%endblock content%}
